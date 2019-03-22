@@ -1,0 +1,23 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "ie >= 7", "chrome>56", "safari>10"],
+        "node": "current"
+      },
+      "useBuiltIns": true
+    }],
+    "stage-2"
+  ],
+  "plugins": [
+    ["babel-plugin-root-import",{
+      "paths": [{
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "server"
+      }]
+    }]
+  ],
+  "ignore": [
+    
+  ]
+}
