@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/rocky216/owner#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "node-alias": "^1.0.4",
-    "node-static-alias": "^1.1.2",
-    "sequelize": "^5.1.0"
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "sequelize": "^3.34.0",
+    "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
