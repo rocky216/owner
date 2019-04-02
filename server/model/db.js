@@ -53,22 +53,22 @@ function defineModel(name, attributes){
   return sequelize.define(name, attrs, {
       tableName: name,
       timestamps: false,
-      hooks: {
-          beforeValidate: function (obj) {
-              let now = Date.now();
-              if (obj.isNewRecord) {
-                  if (!obj.id) {
-                      obj.id = generateId();
-                  }
-                  obj.createdAt = now;
-                  obj.updatedAt = now;
-                  obj.version = 0;
-              } else {
-                  obj.updatedAt = Date.now();
-                  obj.version++;
-              }
-          }
-      }
+      // hooks: {
+      //     beforeValidate: function (obj) {
+      //         let now = Date.now();
+      //         if (obj.isNewRecord) {
+      //             if (!obj.id) {
+      //                 obj.id = generateId();
+      //             }
+      //             obj.createdAt = now;
+      //             obj.updatedAt = now;
+      //             obj.version = 0;
+      //         } else {
+      //             obj.updatedAt = Date.now();
+      //             obj.version++;
+      //         }
+      //     }
+      // }
     });
 }
 

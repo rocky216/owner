@@ -1,10 +1,13 @@
 let path = require("path")
 import express from "express"
+import _ from "lodash"
 var bodyParser = require('body-parser');
 require('dotenv').config()
 
 let ejs = require('ejs');
 let app = express()
+
+global._ = _;
 
 bodyParser.urlencoded({ extended: false })
 

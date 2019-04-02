@@ -5,15 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="/css/home.css">
   <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script src="/js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 
+<div id="app">
+  <div class="add">
+    <div>
+      <input v-model="addparams.username" placeholder="姓名">
+    </div>
+    <div>
+      <input v-model="addparams.mobile" placeholder="手机号">
+    </div>
+    <div>
+      <input v-model="addparams.room_num" placeholder="栋号 如：1">
+    </div>
+    <div>
+      <input v-model="addparams.build_num" placeholder="房号号 如：1011">
+    </div>
+    <div>
+      <button @click="handlenadd">添加</button>
+    </div>
+  </div>
+  <table class="tabel">
+    <tr>
+      <th v-for="(item, index) in tharr" :key="index">{{item}}</th>
+    </tr>
+    <tr v-for="(item, index) in userlist" :key="item.userid">
+        <td>{{index+1}}</td>
+      <td>{{item.username}}</td>
+      <td>{{item.ct_hosue.room_num}}栋</td>
+      <td>{{item.ct_hosue.build_num}}</td>
+      <td>{{item.mobile}}</td>
+    </tr>
+  </table>
+</div>
+
 <script>
-  $.get('/api/sequelize', ()=>{
-    console.log(1)
+$(function(){
+  new Vue({
+    el: '#app',
+    data: {
+      tharr: ['序号','姓名', '栋号', '房号', '手机号'],
+      userlist: [],
+      addparams: {
+        username: '',
+        mobile: '',
+        room_num: '',
+        build_num: '',
+      }
+    },
+    created(){
+      this.getData()
+    },
+    methods: {
+      getData: function(){
+        $.get('/api/queryhouse', res=>{
+          this.userlist = res.data
+          console.log(this.userlist)
+        })
+      },
+      handlenadd(){
+        $.get('/api/addhouse', this.addparams, res=>{
+          
+        })
+      },
+    },  
   })
+})
+  
 </script>
 </body>
 </html>

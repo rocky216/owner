@@ -2,7 +2,7 @@ import Sequelize from "sequelize"
 import sequelize from "../db"
 import User_relation from "../room/index.js"
 
-var User = sequelize.define('ct_user', {
+var User = sequelize.define('ct_users', {
   // id : {type : Sequelize.INTEGER, autoIncrement : true, primaryKey : true},
   username : {type : Sequelize.STRING, allowNull : false},//用户名
   password : {type : Sequelize.STRING, allowNull : false},//密码
